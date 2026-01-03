@@ -1,206 +1,195 @@
-.about {
-    padding: 60px 20px;
-    background-color: #f0f0f5; // Light background for contrast
-    color: #2e2e2e; // Dark text color
-    // display: flex;
-    justify-content: center;
-    align-items: center;
+$primary-color: #2563eb;
+$dark-bg: #0f172a;
+$card-bg: #1e293b;
+$text-light: #f8fafc;
+$text-dim: #94a3b8;
+$accent: #38bdf8;
 
-    .content {
-        max-width: 1100px; 
-        margin: 20px auto;
-        text-align: center; // Center-align text
-        background-color: #ffffff; // White background for content
-        padding: 20px; // Inner padding
-        border-radius: 10px; // Rounded corners
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); // Subtle shadow
-        position: relative; // Position for pseudo-element
-        overflow: hidden; // Hide overflow for pseudo-element
-            display: flex;
-                flex-direction: column;
-        &:hover {
-            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15); // Shadow on hover
-        }
+.about-section {
+    padding: 100px 20px;
+    background-color: $dark-bg;
+    color: $text-light;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    position: relative;
+    overflow: hidden;
 
-        h2 {
-            font-family: "Roboto", sans-serif;
-            font-size: 50px; // Main title size
-            color: #000000; // Title color
-            margin-bottom: 20px; // Spacing below title
-            letter-spacing: 2px; // Letter spacing for title
-        }
+    &::before {
+        content: '';
+        position: absolute;
+        top: -100px;
+        right: -100px;
+        width: 400px;
+        height: 400px;
+        background: radial-gradient(circle, rgba(37, 99, 235, 0.15) 0%, rgba(0, 0, 0, 0) 70%);
+        border-radius: 50%;
+        z-index: 1;
+    }
 
-        .introduction,
-        .details {
-            font-size: 18px; // Base font size for text
-            line-height: 1.6; // Line height for readability
-            margin-bottom: 20px; // Spacing below paragraphs
-            color: #636e72; // Paragraph text color
-        }
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        position: relative;
+        z-index: 2;
+    }
 
-        .skills,
-        .interests {
-            margin-bottom: 30px; // Spacing below sections
+    .header-wrapper {
+        margin-bottom: 60px;
+        text-align: center;
+    }
 
-            h3 {
-                font-size: 28px; // Subtitle size
-                color: #000000; // Subtitle color
-                margin-bottom: 10px; // Spacing below subtitle
-                letter-spacing: 1.5px; // Letter spacing for subtitle
-            }
+    .section-title {
+        font-size: 3rem;
+        font-weight: 800;
+        margin: 0;
+        background: linear-gradient(to right, #fff, $text-dim);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        letter-spacing: -1px;
+    }
 
-            ul {
-                list-style-type: none; // Remove default list style
-                padding: 0; // Remove padding
-                display: flex; // Flexbox for layout
-                flex-wrap: wrap; // Allow wrapping
-                justify-content: center; // Center items
-                gap: 15px; // Spacing between items
+    .title-bar {
+        width: 60px;
+        height: 4px;
+        background: $primary-color;
+        margin: 15px auto 0;
+        border-radius: 2px;
+    }
 
-                li {
-                    background-color: #2874a6; // Background for skills
-                    color: #ffffff; // White text color
-                    padding: 10px 15px; // Inner padding for items
-                    border-radius: 20px; // Rounded items
-                    font-size: 16px; // Font size for skills
-                    transition: background-color 0.3s ease; // Smooth background transition
+    .content-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 60px;
+        align-items: start;
+    }
 
-                    &:hover {
-                        background-color: #15023a; // Change on hover
-                    }
-                }
-            }
-
-            p {
-                font-size: 16px; // Font size for interests paragraph
-                color: #636e72; // Color for interests text
-                line-height: 1.6; // Line height for readability
-            }
-        }
+    .sub-title {
+        font-size: 1.5rem;
+        font-weight: 600;
+        color: $text-light;
+        margin-bottom: 25px;
+        display: flex;
+        align-items: center;
 
         &::before {
             content: '';
-            position: absolute;
-            width: 150px; // Circle size
-            height: 150px; // Circle size
-            background-color: #30336b; // Background color for circle
-            border-radius: 50%; // Circle shape
-            top: -60px; // Positioning
-            right: -60px; // Positioning
-            opacity: 0.2; // Transparency
-            z-index: 0; // Layer behind content
-        }
-
-        &:hover::before {
-            background-color: #1b9cfc; // Change circle color on hover
-            transform: scale(1.1); // Scale up on hover
-            transition: background-color 0.3s ease, transform 0.3s ease; // Smooth transition
+            display: inline-block;
+            width: 8px;
+            height: 24px;
+            background: $accent;
+            margin-right: 12px;
+            border-radius: 2px;
         }
     }
 
-    @media  (max-width: 1199px) {
-        .about{
-                padding: 20px;
-            .content {
-                padding: 20px;
+    .bio-text {
+        font-size: 1.1rem;
+        line-height: 1.8;
+        color: $text-dim;
+        margin-bottom: 25px;
+        text-align: justify;
+    }
+
+    .interests-box {
+        margin-top: 40px;
+        padding: 25px;
+        background: rgba(255, 255, 255, 0.03);
+        border-left: 3px solid $primary-color;
+        border-radius: 0 8px 8px 0;
+
+        p {
+            color: $text-dim;
+            margin: 0;
+            line-height: 1.6;
+        }
+
+        .sub-title {
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+
+            &::before {
+                display: none;
             }
-                .h2{
-                    font-size: 30px !important;
-                }
-                .introduction,
-                .details {
-                    font-size: 14px !important;
-                    line-height: 1.4 !important;
-                    margin-bottom: 20px;
-                }
-                                                .skills h3,
-                                                .interests h3 {
-                                                    font-size: 15px; // Adjust subtitle size
-                                                }
         }
     }
-    @media  (max-width: 991px) {    
-        .content {
-                padding: 15px !important; // Adjust padding for small screens
-            }
-        
-            h2 {
-                font-size: 30px !important; // Adjust title size for small screens
-            }
-        
-            .introduction,
-            .details {
-                font-size: 14px; // Adjust paragraph size for small screens
-                                    line-height: 1.4 !important;
-                                        margin-bottom: 20px;
-            }
-        
-            .skills ul,
-            .interests ul {
-                align-items: center; // Center items in column
-            }
-        
-            .skills li {
-                margin-bottom: 0px; // Spacing between skills items
-                padding: 7px 10px !important;
-                    border-radius: 15px !important;
-                    font-size: 13px !important  ;
-            }
+
+    .skills-column {
+        background: $card-bg;
+        padding: 40px;
+        border-radius: 20px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .skill-category {
+        margin-bottom: 35px;
+
+        &:last-child {
+            margin-bottom: 0;
         }
-        
-        @media (max-width: 480px) {
-            h2 {
-                font-size: 26px; // Further adjust title size
-            }
-        
-            .skills h3,
-            .interests h3 {
-                font-size: 15px; // Adjust subtitle size
-            }
-        
-            .skills li {
-                padding: 8px 12px; // Adjust padding for skills items
-                display: flex;
-            }
+
+        h4 {
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: $text-dim;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+    }
+
+    .skill-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+    }
+
+    .tag {
+        background: rgba(37, 99, 235, 0.1);
+        color: $accent;
+        padding: 8px 16px;
+        border-radius: 6px;
+        font-size: 0.9rem;
+        font-weight: 500;
+        border: 1px solid rgba(56, 189, 248, 0.2);
+        transition: all 0.3s ease;
+
+        &:hover {
+            background: $primary-color;
+            color: #fff;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(37, 99, 235, 0.3);
+            border-color: $primary-color;
+        }
+    }
+
+    @media (max-width: 992px) {
+        .content-grid {
+            grid-template-columns: 1fr;
+            gap: 40px;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
         }
     }
 
     @media (max-width: 768px) {
-        .content {
-            padding: 30px !important; // Adjust padding for small screens
-        }
+padding: 60px 20px;
 
-        h2 {
-            font-size: 30px; // Adjust title size for small screens
-        }
-
-        .introduction,
-        .details {
-            font-size: 16px; // Adjust paragraph size for small screens
-        }
-
-        .skills ul,
-        .interests ul {
-                align-items: center; // Center items in column
-        }
-
-        .skills li {
-            margin-bottom: 10px; // Spacing between skills items
-        }
+    .skills-column {
+        padding: 25px;
     }
 
-    @media (max-width: 480px) {
-        h2 {
-            font-size: 26px; // Further adjust title size
-        }
-
-        .skills h3,
-        .interests h3 {
-            font-size: 20px; // Adjust subtitle size
-        }
-
-        .skills li {
-            padding: 8px 12px; // Adjust padding for skills items
-            display: flex;
-        }
+    .tag {
+        font-size: 0.85rem;
+        padding: 6px 12px;
     }
+
+    .bio-text {
+        font-size: 0.95rem; 
+        line-height: 1.5;
+        margin-bottom: 15px;
+        text-align: left;
+    }
+    }
+}

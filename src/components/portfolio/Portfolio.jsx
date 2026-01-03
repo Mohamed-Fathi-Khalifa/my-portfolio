@@ -1,88 +1,61 @@
 import { useEffect, useState } from "react";
-import PortfolioList from "../portfolioList/PortfolioList";
 import "./portfolio.scss";
-import {
-  featuredPortfolio,
-  webPortfolio,
-  mobilePortfolio,
-  designPortfolio,
-  contentPortfolio,
-} from "../../data";
+import { featuredPortfolio } from "../../data";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faGithub } from '@fortawesome/free-brands-svg-icons';
+import { faCode } from '@fortawesome/free-solid-svg-icons';
 
 export default function Portfolio() {
-  const [selected, setSelected] = useState("featured");
   const [data, setData] = useState([]);
-  const list = [
-    // {
-    //   id: "featured",
-    //   title: "Featured",
-    // },
-    // {
-    //   id: "web",
-    //   title: "Web App",
-    // },
-    // {
-    //   id: "mobile",
-    //   title: "Mobile App",
-    // },
-    // {
-    //   id: "design",
-    //   title: "Design",
-    // },
-    // {
-    //   id: "content",
-    //   title: "Content",
-    // },
-  ];
 
   useEffect(() => {
-    switch (selected) {
-      case "featured":
-        setData(featuredPortfolio);
-        break;
-      // case "web":
-      //   setData(webPortfolio);
-      //   break;
-      // case "mobile":
-      //   setData(mobilePortfolio);
-      //   break;
-      // case "design":
-      //   setData(designPortfolio);
-      //   break;
-      // case "content":
-      //   setData(contentPortfolio);
-      //   break;
-      // default:
-      //   setData(featuredPortfolio);
-    }
-  }, [selected]);
+    setData(featuredPortfolio);
+  }, []);
 
   return (
     <div className="portfolio" id="portfolio">
-      <h1>Portfolio</h1>
-      <ul>
-        {list.map((item) => (
-          <PortfolioList
-            title={item.title}
-            active={selected === item.id}
-            setSelected={setSelected}
-            id={item.id}
-          />
-        ))}
-      </ul>
       <div className="container">
-        {data.map((d) => (
-          <div className="item" >
-            <a  href={d.url} key={d.id} target="_blank" rel="noopener noreferrer" onClick={setData}>
-            <img
-              src={d.img}
-              alt=""
+        <h2 className="section-title">Featured Projects</h2>
+        
+        <div className="portfolio-grid">
+          {data.map((d) => (
+            <div className="project-card" key={d.id}>
+              <div className="image-container">
+                <img src={d.img} alt={d.title} />
+                <div className="overlay"></div>
+              </div>
               
-              />
-            <h3>{d.title}</h3>
-              </a>
-          </div>
-        ))}
+              <div className="content">
+                <div className="header">
+                  <h3>{d.title}</h3>
+                </div>
+
+                <div className="tech-stack">
+                  {d.tech.map((t, index) => (
+                    <span key={index} className="tech-badge">{t}</span>
+                  ))}
+                </div>
+
+                <p className="description">{d.description}</p>
+
+                <div className="links-container">
+                  {d.links.map((link, i) => (
+                    <a 
+                      key={i} 
+                      href={link.url} 
+                      target="_blank" 
+                      rel="noreferrer"
+                      className="github-btn"
+                    >
+                      <FontAwesomeIcon icon={faGithub} className="icon" />
+                      {link.label}
+                    </a>
+                  ))}
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );

@@ -2,52 +2,74 @@ import React from "react";
 import "./about.scss";
 
 export default function About() {
+  const skills = {
+    frontend: [
+      "React", "Angular", "HTML5", "CSS3", "Bootstrap", "JavaScript (ES6+)", "Redux" ,"TypeScript"
+    ],
+    backend: [
+      "C / C++", "C#", "ASP.NET Core", "ASP.NET MVC", "Node.js", "Express.js", "RESTful API","Clean Architecture", "Python" ,"JWT Authentication","Web Scraping"
+    ],
+    dataTools: [
+      "Microsoft SQL Server", "MongoDB", "EF Core", "LINQ", "Git/GitHub", "Data Structures","SOLID Principles","OOP"
+    ]
+  };
+
   return (
-    <div className="about" id="about">
-      <div className="content">
-        <h2>About</h2>
-        <p className="introduction">
-          I'm a passionate and dedicated developer with a strong background in full-stack development. With expertise in technologies like Angular, C#, ASP.NET MVC, ASP.NET Core, React, Express, MongoDB, and Node.js, I specialize in building scalable, efficient, and responsive applications.
-                      I am a highly skilled and detail-oriented developer with a strong foundation in specific programming languages/technologies like C#, JavaScript. I excel at working both independently and collaboratively within a team to meet project deadlines and business objectives. I am looking for an opportunity
- where I can leverage my skills to contribute to the growth and success of a organization
-        </p>
-        <p className="details">
-          I enjoy working in dynamic and collaborative environments, continually striving to learn and adapt to new technologies and industry trends. My goal is to craft user-centric solutions that not only fulfill business requirements but also provide an exceptional user experience.
-        </p>
-        
-        <div className="skills">
-          <h3>Skills</h3>
-          <ul>
-            <li>Angular</li>
-            <li>C#</li>
-            <li>ASP.NET MVC</li>
-            <li>ASP.NET Core</li>
-            <li>React</li>
-           <li>Html / Html5</li>
-           <li>CSS / Css3</li>
-           <li>Bootstrap</li>
-           <li>React</li>
-           <li>JavaScript</li>
-           <li> Express.js</li>
-           <li>SQL</li>
-           <li>NoSQL</li>
-                        <li>RESTful API</li>
-                        <li>MongoDB	</li>
-                        <li>Entity Framework</li>
-                        <li>LINQ</li>
-                        <li>Git/Github</li>
-                        <li>Data Structures</li>
-                        <li>C#</li>
-            <li>MongoDB</li>
-            <li>Node.js</li>
-          </ul>
+    <div className="about-section" id="about">
+      <div className="container">
+        <div className="header-wrapper">
+          <h2 className="section-title">About Me</h2>
+          <div className="title-bar"></div>
         </div>
 
-        <div className="interests">
-          <h3>Interests</h3>
-          <p>
-In addition to coding, I have a keen interest in contributing to open-source projects to the growth and success of a organization
-          </p>
+        <div className="content-grid">
+          <div className="bio-column">
+            <h3 className="sub-title">Who I Am</h3>
+            <p className="bio-text">
+              Software Engineer specializing in building scalable enterprise applications using .NET 8 and Angular. With a strong foundation in Clean Architecture and SQL Server, I focus on delivering high-performance solutions.
+            </p>
+            <p className="bio-text">
+              From complex backend logic to responsive user interfaces. I am committed to writing clean, maintainable code and solving real-world business problems efficiently. I am looking for an opportunity where I can leverage my skills to contribute to the growth and success of an organization.
+            </p>
+            
+            <div className="interests-box">
+              <h3 className="sub-title">Interests</h3>
+              <p>
+                In addition to coding, I have a keen interest in contributing to open-source projects and staying ahead of industry trends to drive innovation.
+              </p>
+            </div>
+          </div>
+
+          <div className="skills-column">
+            <h3 className="sub-title">Tech Stack</h3>
+            
+            <div className="skill-category">
+              <h4>Frontend Development</h4>
+              <div className="skill-tags">
+                {skills.frontend.map((skill, index) => (
+                  <span key={index} className="tag">{skill}</span>
+                ))}
+              </div>
+            </div>
+
+            <div className="skill-category">
+              <h4>Backend Architecture</h4>
+              <div className="skill-tags">
+                {skills.backend.map((skill, index) => (
+                  <span key={index} className="tag">{skill}</span>
+                ))}
+              </div>
+            </div>
+
+            <div className="skill-category">
+              <h4>Database & Tools</h4>
+              <div className="skill-tags">
+                {skills.dataTools.map((skill, index) => (
+                  <span key={index} className="tag">{skill}</span>
+                ))}
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>

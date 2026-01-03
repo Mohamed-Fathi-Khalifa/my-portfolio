@@ -1,97 +1,329 @@
-@import "../../global.scss";
+$bg-color: #0f172a;
+$card-bg: #1e293b;
+$text-light: #f8fafc;
+$text-dim: #94a3b8;
+$primary: #3b82f6;
+$accent: #38bdf8;
+$error: #ef4444;
+$success: #10b981;
 
 .contact {
-    background-color: white;
-    display: flex;
+  padding: 100px 20px;
+  background-color: $bg-color;
+  color: $text-light;
+  font-family: 'Inter', sans-serif;
+  position: relative;
+  overflow: hidden;
 
-    @include mobile {
-        flex-direction: column;
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+  }
+
+  .section-title {
+    font-size: 3rem;
+    font-weight: 800;
+    text-align: center;
+    margin-bottom: 60px;
+    background: linear-gradient(to right, #fff, $text-dim);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    letter-spacing: -1px;
+  }
+
+  .contact-wrapper {
+    display: flex;
+    justify-content: space-between;
+    gap: 50px;
+    background-color: $card-bg;
+    border-radius: 20px;
+    padding: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+  }
+
+  .contact-info {
+    flex: 1;
+    background: linear-gradient(145deg, rgba(59, 130, 246, 0.1), rgba(15, 23, 42, 0.8));
+    padding: 40px;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+
+    h3 {
+      font-size: 2rem;
+      margin-bottom: 15px;
+      color: $text-light;
     }
 
-    .left {
-        flex: 1;
-        overflow: hidden;
+    .sub-text {
+      color: $text-dim;
+      line-height: 1.6;
+      margin-bottom: 40px;
+      font-size: 0.95rem;
+    }
 
-        img {
-            height: 100%;
+    .info-item {
+      display: flex;
+      align-items: center;
+      margin-bottom: 30px;
+
+      .icon-box {
+        width: 50px;
+        height: 50px;
+        background-color: rgba(59, 130, 246, 0.1);
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: $primary;
+        font-size: 1.2rem;
+        margin-right: 20px;
+        transition: 0.3s;
+      }
+
+      span {
+        display: block;
+        font-size: 0.85rem;
+        color: $text-dim;
+        margin-bottom: 5px;
+      }
+
+      p {
+        font-size: 1.1rem;
+        font-weight: 600;
+        color: $text-light;
+      }
+
+      &:hover .icon-box {
+        background-color: $primary;
+        color: white;
+        transform: scale(1.1);
+      }
+    }
+
+    .social-links {
+      margin-top: auto;
+      
+      h4 {
+        font-size: 1rem;
+        color: $text-dim;
+        margin-bottom: 15px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+      }
+
+      .links {
+        display: flex;
+        gap: 15px;
+
+        a {
+          width: 45px;
+          height: 45px;
+          background-color: rgba(255, 255, 255, 0.05);
+          border-radius: 50%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          color: $text-light;
+          font-size: 1.2rem;
+          transition: all 0.3s ease;
+          border: 1px solid rgba(255, 255, 255, 0.05);
+
+          &:hover {
+            background-color: $primary;
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(59, 130, 246, 0.3);
+          }
+        }
+      }
+    }
+  }
+
+  .contact-form {
+    flex: 1.5;
+    padding: 40px;
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 25px;
+    }
+
+    .input-group {
+      display: flex;
+      gap: 20px;
+    }
+
+    .input-box {
+      position: relative;
+      width: 100%;
+
+      input, textarea {
+        width: 100%;
+        padding: 15px 20px;
+        background-color: rgba(15, 23, 42, 0.6);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 8px;
+        color: $text-light;
+        font-size: 1rem;
+        outline: none;
+        transition: 0.3s;
+        font-family: inherit;
+
+        &:focus, &:not(:placeholder-shown) {
+          border-color: $primary;
+          background-color: rgba(15, 23, 42, 0.9);
+        }
+
+        &:focus + label, &:not(:placeholder-shown) + label {
+          top: -10px;
+          left: 15px;
+          font-size: 0.8rem;
+          color: $primary;
+          background-color: $card-bg;
+          padding: 0 5px;
+        }
+
+        &.error-border {
+          border-color: $error;
+        }
+      }
+
+      textarea {
+        resize: none;
+        height: 150px;
+      }
+
+      label {
+        position: absolute;
+        top: 15px;
+        left: 20px;
+        color: $text-dim;
+        pointer-events: none;
+        transition: 0.3s ease;
+      }
+
+      .error-msg {
+        color: $error;
+        font-size: 0.8rem;
+        margin-top: 5px;
+        display: block;
+      }
+    }
+
+    .submit-btn {
+      padding: 15px 30px;
+      background: linear-gradient(to right, $primary, $accent);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      transition: all 0.3s ease;
+      margin-top: 10px;
+      align-self: flex-start;
+
+      &:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 20px rgba(59, 130, 246, 0.3);
+      }
+
+      .btn-icon {
+        font-size: 0.9rem;
+      }
+    }
+
+    .success-msg {
+      color: $success;
+      font-weight: 500;
+      text-align: center;
+      margin-top: 10px;
+      padding: 10px;
+      background: rgba(16, 185, 129, 0.1);
+      border-radius: 5px;
+    }
+  }
+
+  @media (max-width: 992px) {
+    .contact-wrapper {
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .contact-info {
+      border-radius: 15px 15px 0 0;
+      padding: 30px;
+    }
+
+    .contact-form {
+      padding: 30px;
+    }
+
+    .input-group {
+      flex-direction: column;
+    }
+  }
+
+  @media (max-width: 768px) {
+    padding: 60px 20px;
+
+    .section-title {
+      font-size: 2.5rem;
+    }
+    
+    .contact-form {
+        padding: 20px 0;
+        
+        .submit-btn {
             width: 100%;
         }
     }
+  }
+  @media (max-width: 500px) {
 
-    .right {
-        flex: 1;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        
-        h2 {
-            font-size: 30px;
-        }
+      .contact-info {
+          .info-item {
+              flex-direction: column;
+              align-items: center;
+              text-align: center;
+              padding: 20px 15px;
+              gap: 10px; // قللت المسافة شوية
 
-        form {
-            width: 70%;
-            height: 70%;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: space-around;
+              .icon-box {
+                  width: 45px;
+                  height: 45px;
+                  min-width: 45px;
+                  min-height: 45px;
+                  font-size: 18px;
+                  margin-bottom: 10px; 
+                  margin-right: 0 !important; 
+              }
 
-            input {
-                width: 300px;
-                height: 30px;
-                font-size: 14px;
+              div {
+                  width: 100%;
 
-                @include mobile {
-                    width: 200px;
-                    height: 20px;
-                }
-            }
+                  span {
+                      font-size: 0.75rem;
+                      margin-bottom: 4px;
+                  }
 
-            textarea {
-                width: 300px;
-                height: 200px;
-                font-size: 14px;
-
-                @include mobile {
-                    width: 200px;
-                    height: 100px;
-                }
-            }
-
-            button {
-                width: 150px;
-                height: 30px;
-                color: white;
-                background-color: crimson;
-                border: none;
-                border-radius: 10px;
-                font-weight: 500;
-                cursor: pointer;
-
-                &:focus {
-                    outline: none;
-                }
-            }
-
-            span {
-                color: green;
-            }
-        }
-                 .social-media {
-                     display: flex;
-                     gap: 1rem;
-                     margin-top: 1rem;
-        
-                     a {
-                         font-size: 1.5rem;
-                         color: #636e72;
-                         transition: color 0.3s;
-        
-                         &:hover {
-                             color: $mainColor;
-                         }
-                     }
-                 }
-    }
-}
+                  p {
+                      font-size: 0.9rem;
+                      word-break: break-all;
+                      line-height: 1.4;
+                  }
+              }
+          }
+      }
+      
+  }
+  }

@@ -1,104 +1,171 @@
-@import "../../global.scss";
+$bg-color: #0f172a;
+$card-bg: #1e293b;
+$text-light: #f8fafc;
+$text-dim: #94a3b8;
+$primary: #3b82f6;
+$accent: #38bdf8;
+$border-color: rgba(255, 255, 255, 0.05);
 
 .portfolio {
-    background-color: white;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-
-    h1 {
-        font-size: 50px;
-
-        @include mobile {
-            font-size: 20px;
-        }
-    }
-
-    ul {
-        margin: 10px;
-        padding: 0;
-        list-style: none;
-        display: flex;
-
-        @include mobile {
-            margin: 10px 0;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
-    }
+    padding: 100px 20px;
+    background-color: $bg-color;
+    color: $text-light;
+    font-family: 'Inter', sans-serif;
+    width: 100%;
 
     .container {
-        width: 70%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-wrap: wrap;
+        max-width: 1300px;
+        margin: 0 auto;
+    }
 
-        @include mobile {
-            width: 100%;
+    .section-title {
+        font-size: 3rem;
+        font-weight: 800;
+        text-align: center;
+        margin-bottom: 60px;
+        background: linear-gradient(to right, #fff, $text-dim);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        letter-spacing: -1px;
+    }
+
+    .portfolio-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+        gap: 30px;
+        justify-content: center;
+    }
+
+    .project-card {
+        background-color: $card-bg;
+        border: 1px solid $border-color;
+        border-radius: 16px;
+        overflow: hidden;
+        transition: all 0.3s ease;
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+
+        &:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            border-color: rgba(59, 130, 246, 0.3);
+
+            .image-container img {
+                transform: scale(1.05);
+            }
         }
 
-        .item {
-            width: 220px;
-            height: 150px;
-            border-radius: 20px;
-            border: 1px solid rgb(240, 239, 239);
-            margin: 10px 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
+        .image-container {
+            width: 100%;
+            height: 200px;
+            overflow: hidden;
             position: relative;
-            transition: all 0.5s ease;
-            cursor: pointer;
-
-            a {
-                text-decoration: none;
-                color: inherit; // Keeps the text color same as other elements
-            }
-
-            @include mobile {
-                width: 130px;
-                height: 100px;
-            }
-
-            h3 {
-                position: absolute;
-                font-size: 20px;
-            }
+            background-color: #000;
 
             img {
                 width: 100%;
                 height: 100%;
                 object-fit: cover;
-                z-index: 1;
+                transition: transform 0.5s ease;
+                opacity: 0.8;
             }
 
-            &:hover {
-                background-color: $mainColor;
+            .overlay {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: linear-gradient(to bottom, transparent, $card-bg);
+                opacity: 0.6;
+            }
+        }
 
-                img {
-                    opacity: 0.2;
-                    z-index: 0;
+        .content {
+            padding: 25px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+
+            .header {
+                margin-bottom: 15px;
+
+                h3 {
+                    font-size: 1.4rem;
+                    font-weight: 700;
+                    color: $text-light;
+                    margin: 0;
+                }
+            }
+
+            .tech-stack {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 8px;
+                margin-bottom: 20px;
+
+                .tech-badge {
+                    font-size: 0.75rem;
+                    color: $accent;
+                    background: rgba(59, 130, 246, 0.1);
+                    padding: 4px 10px;
+                    border-radius: 20px;
+                    border: 1px solid rgba(59, 130, 246, 0.2);
+                    font-weight: 500;
+                }
+            }
+
+            .description {
+                font-size: 0.95rem;
+                color: $text-dim;
+                line-height: 1.6;
+                margin-bottom: 25px;
+                flex-grow: 1;
+            }
+
+            .links-container {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 10px;
+                margin-top: auto;
+
+                .github-btn {
+                    display: flex;
+                    align-items: center;
+                    gap: 8px;
+                    padding: 10px 16px;
+                    background-color: rgba(255, 255, 255, 0.05);
+                    color: $text-light;
+                    border-radius: 8px;
+                    font-size: 0.9rem;
+                    font-weight: 600;
+                    transition: all 0.3s ease;
+                    border: 1px solid transparent;
+
+                    .icon {
+                        font-size: 1.1rem;
+                    }
+
+                    &:hover {
+                        background-color: $primary;
+                        color: white;
+                        box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+                    }
                 }
             }
         }
     }
 
-    @media (max-width: 480px) {
-        .item {
-            margin: 100px auto;
+    @media (max-width: 768px) {
+        padding: 60px 20px;
+
+        .portfolio-grid {
+            grid-template-columns: 1fr;
         }
 
-        .portfolio .container {
-            width: 70%;
-            display: flex;
-            align-items: end;
-            justify-content: center;
-            align-content: center;
-            flex-direction: row;
-            flex-wrap: wrap;
-            margin-top: 150px;
+        .section-title {
+            font-size: 2.2rem;
         }
     }
 }

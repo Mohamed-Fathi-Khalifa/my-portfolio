@@ -1,24 +1,28 @@
+@import "./global.scss";
+
 .app {
-    height: 100vh;
+    width: 100%;
+    // min-height بدل height عشان يسمح بالتمدد
+    min-height: 100vh;
+    background-color: $dark-bg;
+    color: $text-light;
+    overflow: hidden;
+    /* عشان نمنع أي تداخل خارجي */
 
     .sections {
         width: 100%;
-        height: calc(100vh - 70px);
-        background-color: lightsalmon;
+        // height: auto ضروري عشان القسم يطول براحته وميعملش سكرول داخلي
+        height: auto;
         position: relative;
         top: 70px;
-        scroll-behavior: smooth;
-        scroll-snap-type: y mandatory;
-        scrollbar-width: none; //for firefox
 
-        &::-webkit-scrollbar {
-            display: none;
-        }
+        // مسحنا overflow و scroll-snap عشان نعتمد على سكرول الصفحة الأساسي
 
         >* {
-            width: 100vw;
-            height: calc(135vh - 70px);
-            scroll-snap-align: start;
+            width: 100%;
+            // min-height بتضمن إن كل قسم ياخد الشاشة كاملة كحد أدنى
+            min-height: calc(100vh - 70px);
+            height: auto; // بيسمح للقسم يطول لو الكلام كتير
         }
     }
 }
