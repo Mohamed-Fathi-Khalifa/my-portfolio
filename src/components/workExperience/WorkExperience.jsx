@@ -13,8 +13,8 @@ export default function WorkExperience() {
     {
       id: 2,
       role: ".NET Full-Stack Trainee",
-      tech: "(ITI)",
-      company: "Information Technology Institute",
+      tech: ".NET Full Stack", 
+      company: "Information Technology Institute (ITI)",
       location: "Giza, Egypt",
       period: "July 2025 – Dec 2025",
       description: "Developed full-stack web applications using ASP.NET Core, Entity Framework Core, Angular, and SQL Server, applying OOP and software engineering principles. Collaborated in Agile teams using Git/GitHub to build and deploy RESTful APIs and real-world business solutions."
@@ -22,8 +22,8 @@ export default function WorkExperience() {
     {
       id: 3,
       role: ".NET Full-Stack Trainee",
-      tech: "(DEPI)",
-      company: "Digital Egypt Pioneers Initiative",
+      tech: ".NET Full Stack",
+      company: "Digital Egypt Pioneers Initiative (DEPI)",
       location: "Smart Village, Egypt",
       period: "Oct 2024 – Apr 2025",
       description: "Developed scalable full-stack web applications using ASP.NET Core, leveraging MVC/Razor Pages for the front end, Entity Framework Core and SQL Server for data management, and RESTful APIs with clean architecture principles (SOLID design patterns)."
@@ -31,8 +31,8 @@ export default function WorkExperience() {
     {
       id: 4,
       role: "MEAN-Stack Developer Trainee",
-      tech: "(NTI)",
-      company: "National Telecommunication Institute",
+      tech: "MEAN Stack",
+      company: "National Telecommunication Institute (NTI)",
       location: "Menofia, Egypt",
       period: "Aug 2024 – Nov 2024",
       description: "Developed a full-stack e-commerce app using the MEAN stack with user authentication, product management, shopping cart, and order processing. Secured admin routes for product and order management, and deployed for testing and demonstration."
