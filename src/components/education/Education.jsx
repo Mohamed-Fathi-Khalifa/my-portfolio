@@ -11,9 +11,9 @@ export default function Education() {
     },
     {
       id: 2,
-      degree: "Bachelor of Business Administration (BA)",
+      degree: "Bachelor of Business Administration (BBA)",
       school: "National Egyptian E-Learning University (EELU)",
-      date: "2016 - 2020", 
+      date: "2016 - 2020",
       major: "Major: Management - Finance & Investment",
       gpa: "GPA: 3.15",
       description: ""
@@ -32,9 +32,9 @@ export default function Education() {
                   <h3>{item.degree}</h3>
                   <span className="date-badge">{item.date}</span>
                 </div>
-                
+
                 <h4 className="school-name">{item.school}</h4>
-                
+
                 {(item.major || item.gpa) && (
                   <div className="details-row">
                     {/* {item.major && <span className="highlight">{item.major}</span>} */}

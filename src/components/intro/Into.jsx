@@ -4,14 +4,14 @@ import { useEffect, useRef } from "react";
 
 export default function Intro() {
   const textRef = useRef();
-const initializedRef = useRef(false);
-useEffect(() => {
+  const initializedRef = useRef(false);
+  useEffect(() => {
     if (!initializedRef.current) {
       init(textRef.current, {
         showCursor: true,
         backDelay: 1500,
         backSpeed: 60,
-        strings: ["Full Stack Developer", ".NET Developer", "Software Engineer"],
+        strings: ["Software Engineer (.NET & Angular)", ".NET Developer", "Full Stack Developer"],
       });
       initializedRef.current = true;
     }
@@ -26,7 +26,7 @@ useEffect(() => {
             <img src="assets/man.png" alt="Mohamed Fathi" />
           </div>
         </div>
-        
+
         <div className="right">
           <div className="wrapper">
             <h2>Welcome, I am</h2>
@@ -34,13 +34,13 @@ useEffect(() => {
             <h3>
               Freelance <span ref={textRef}></span>
             </h3>
-            
+
             <div className="cta-buttons">
               <a href="#portfolio" className="btn-primary">View Projects</a>
               <a href="#contact" className="btn-secondary">Contact Me</a>
             </div>
           </div>
-          
+
           <a href="#portfolio" className="scroll-down">
             <img src="assets/down.png" alt="Scroll Down" />
           </a>

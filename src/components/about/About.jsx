@@ -2,17 +2,42 @@ import React from "react";
 import "./about.scss";
 
 export default function About() {
-  const skills = {
-    frontend: [
-      "React", "Angular", "HTML5", "CSS3", "Bootstrap", "JavaScript (ES6+)", "Redux" ,"TypeScript"
-    ],
-    backend: [
-      "C / C++", "C#", "ASP.NET Core", "ASP.NET MVC", "Node.js", "Express.js", "RESTful API","Clean Architecture", "Python" ,"JWT Authentication","Web Scraping"
-    ],
-    dataTools: [
-      "Microsoft SQL Server", "MongoDB", "EF Core", "LINQ", "Git/GitHub", "Data Structures","SOLID Principles","OOP"
-    ]
-  };
+  const skillCategories = [
+    {
+      label: "Backend & Databases",
+      items: [
+        "C#", "ASP.NET Core MVC", "ASP.NET Core Web API", "Entity Framework",
+        "ADO.NET", "LINQ", "SQL Server", "PostgreSQL", "MongoDB", "XML", "Microsoft Azure"
+      ]
+    },
+    {
+      label: "Architecture & Patterns",
+      items: [
+        "Clean Architecture", "N-Tier Architecture", "Domain-Driven Design (DDD)",
+        "CQRS", "MediatR", "Repository & Unit of Work Patterns"
+      ]
+    },
+    {
+      label: "Integrations, Security & Tools",
+      items: [
+        "ERP / System Integration", "Data Synchronization", "Background Processing (Hangfire)",
+        "Web Scraping", "JWT Authentication", "JWT & API Key Authentication",
+        "Role-Based Access Control (RBAC)", "Git", "GitHub", "GitLab"
+      ]
+    },
+    {
+      label: "Frontend Development",
+      items: [
+        "Angular", "TypeScript", "React", "JavaScript", "ES6", "HTML5 & CSS3", "Bootstrap"
+      ]
+    },
+    {
+      label: "Basics & Concepts",
+      items: [
+        "Data Structures", "OOP", "SOLID Principles", "Algorithms", "API Design"
+      ]
+    }
+  ];
 
   return (
     <div className="about-section" id="about">
@@ -26,10 +51,10 @@ export default function About() {
           <div className="bio-column">
             <h3 className="sub-title">Who I Am</h3>
             <p className="bio-text">
-              Software Engineer specializing in building scalable enterprise applications using .NET 8 and Angular. With a strong foundation in Clean Architecture and SQL Server, I focus on delivering high-performance solutions.
+              Software Engineer specializing in .NET and Angular, combining a strong technical foundation in Clean Architecture with a solid background in Business Administration. Adept at architecting robust backend solutions and seamless integrations that resolve complex B2B workflows.
             </p>
             <p className="bio-text">
-              From complex backend logic to responsive user interfaces. I am committed to writing clean, maintainable code and solving real-world business problems efficiently. I am looking for an opportunity where I can leverage my skills to contribute to the growth and success of an organization.
+              Proven expertise in optimizing database performance, implementing asynchronous processing, and delivering secure, enterprise-grade applications.
             </p>
             
             <div className="interests-box">
@@ -42,33 +67,17 @@ export default function About() {
 
           <div className="skills-column">
             <h3 className="sub-title">Tech Stack</h3>
-            
-            <div className="skill-category">
-              <h4>Frontend Development</h4>
-              <div className="skill-tags">
-                {skills.frontend.map((skill, index) => (
-                  <span key={index} className="tag">{skill}</span>
-                ))}
-              </div>
-            </div>
 
-            <div className="skill-category">
-              <h4>Backend Architecture</h4>
-              <div className="skill-tags">
-                {skills.backend.map((skill, index) => (
-                  <span key={index} className="tag">{skill}</span>
-                ))}
+            {skillCategories.map((category, catIndex) => (
+              <div className="skill-category" key={catIndex}>
+                <h4>{category.label}</h4>
+                <div className="skill-tags">
+                  {category.items.map((skill, index) => (
+                    <span key={index} className="tag">{skill}</span>
+                  ))}
+                </div>
               </div>
-            </div>
-
-            <div className="skill-category">
-              <h4>Database & Tools</h4>
-              <div className="skill-tags">
-                {skills.dataTools.map((skill, index) => (
-                  <span key={index} className="tag">{skill}</span>
-                ))}
-              </div>
-            </div>
+            ))}
           </div>
         </div>
       </div>

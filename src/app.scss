@@ -1,28 +1,21 @@
 @import "./global.scss";
 
 .app {
+  width: 100%;
+  min-height: 100vh;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+
+  .sections {
     width: 100%;
-    // min-height بدل height عشان يسمح بالتمدد
-    min-height: 100vh;
-    background-color: $dark-bg;
-    color: $text-light;
-    overflow: hidden;
-    /* عشان نمنع أي تداخل خارجي */
+    height: auto;
+    position: relative;
+    top: 70px;
 
-    .sections {
-        width: 100%;
-        // height: auto ضروري عشان القسم يطول براحته وميعملش سكرول داخلي
-        height: auto;
-        position: relative;
-        top: 70px;
-
-        // مسحنا overflow و scroll-snap عشان نعتمد على سكرول الصفحة الأساسي
-
-        >* {
-            width: 100%;
-            // min-height بتضمن إن كل قسم ياخد الشاشة كاملة كحد أدنى
-            min-height: calc(100vh - 70px);
-            height: auto; // بيسمح للقسم يطول لو الكلام كتير
-        }
+    > * {
+      width: 100%;
+      min-height: calc(100vh - 70px);
+      height: auto;
     }
+  }
 }

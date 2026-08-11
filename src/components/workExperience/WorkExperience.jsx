@@ -4,38 +4,16 @@ export default function WorkExperience() {
   const experiences = [
     {
       id: 1,
-      role: "Freelance Full-Stack Developer",
+      role: "Software Engineer",
       tech: "(.NET & Angular)",
-      company: "Freelance",
-      period: "Oct 2025 – Present",
-      description: "Delivering scalable back-end architectures and secure RESTful APIs using ASP.NET Core and SQL Server, while creating responsive interfaces with Angular. My primary focus is on server-side performance, database optimization, and implementing complex business logic. I ensure code quality through Clean Architecture and strictly adhere to project timelines to meet client expectations."
-    },
-    {
-      id: 2,
-      role: ".NET Full-Stack Trainee",
-      tech: ".NET Full Stack", 
-      company: "Information Technology Institute (ITI)",
-      location: "Giza, Egypt",
-      period: "July 2025 – Dec 2025",
-      description: "Developed full-stack web applications using ASP.NET Core, Entity Framework Core, Angular, and SQL Server, applying OOP and software engineering principles. Collaborated in Agile teams using Git/GitHub to build and deploy RESTful APIs and real-world business solutions."
-    },
-    {
-      id: 3,
-      role: ".NET Full-Stack Trainee",
-      tech: ".NET Full Stack",
-      company: "Digital Egypt Pioneers Initiative (DEPI)",
-      location: "Smart Village, Egypt",
-      period: "Oct 2024 – Apr 2025",
-      description: "Developed scalable full-stack web applications using ASP.NET Core, leveraging MVC/Razor Pages for the front end, Entity Framework Core and SQL Server for data management, and RESTful APIs with clean architecture principles (SOLID design patterns)."
-    },
-    {
-      id: 4,
-      role: "MEAN-Stack Developer Trainee",
-      tech: "MEAN Stack",
-      company: "National Telecommunication Institute (NTI)",
-      location: "Menofia, Egypt",
-      period: "Aug 2024 – Nov 2024",
-      description: "Developed a full-stack e-commerce app using the MEAN stack with user authentication, product management, shopping cart, and order processing. Secured admin routes for product and order management, and deployed for testing and demonstration."
+      company: "SKUs App (by El-Mokhtasa for Pharmaceutical Distribution)",
+      location: "Maadi, Egypt",
+      period: "Apr 2026 – Present",
+      bullets: [
+        "Developed backend architectures and Angular interfaces for the SKUs App, bridging pharmacies with external warehouse ERPs.",
+        "Implemented robust RESTful APIs for seamless integration, utilizing Hangfire for asynchronous full and delta stock synchronization.",
+        "Engineered the order management lifecycle, creating dynamic validation flows handling inventory, quotas, and minimum order value discrepancies.",
+      ]
     }
   ];
 
@@ -59,7 +37,11 @@ export default function WorkExperience() {
                 {exp.location && <span className="location">{exp.location}</span>}
               </div>
               
-              <p className="description">{exp.description}</p>
+              <ul className="bullets">
+                {exp.bullets.map((bullet, i) => (
+                  <li key={i}>{bullet}</li>
+                ))}
+              </ul>
             </div>
           ))}
         </div>

@@ -1,191 +1,188 @@
-$bg-color: #0f172a;
-$card-bg: #1e293b;
-$text-light: #f8fafc;
-$text-dim: #94a3b8;
-$primary: #3b82f6;
-$accent: #38bdf8;
-$border-color: rgba(255, 255, 255, 0.05);
+@import "../../global.scss";
 
 .education {
-    padding: 100px 20px;
-    background-color: $bg-color;
-    color: $text-light;
-    font-family: 'Inter', sans-serif;
-    width: 100%;
+  padding: var(--section-padding);
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  width: 100%;
+  position: relative;
+
+  .container {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .section-title {
+    @include section-title;
+  }
+
+  // ── Timeline track ─────────────────────────────────────────
+  .education-list {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
     position: relative;
 
-    .container {
-        max-width: 1000px;
-        margin: 0 auto;
+    &::before {
+      content: '';
+      position: absolute;
+      left: 19px;
+      top: 20px;
+      bottom: 20px;
+      width: 2px;
+      background: linear-gradient(
+        to bottom,
+        var(--color-primary),
+        rgba(56, 189, 248, 0.4),
+        transparent
+      );
+      z-index: 0;
+    }
+  }
+
+  // ── Card ───────────────────────────────────────────────────
+  .education-card {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    padding: 32px 36px;
+    position: relative;
+    margin-left: 52px;
+    transition: var(--transition);
+    z-index: 1;
+
+    // Timeline dot
+    &::after {
+      content: '';
+      position: absolute;
+      left: -37px;
+      top: 36px;
+      width: 14px;
+      height: 14px;
+      background: var(--color-bg);
+      border: 2.5px solid var(--color-primary);
+      border-radius: 50%;
+      z-index: 2;
+      transition: var(--transition);
+      box-shadow: 0 0 0 3px rgba(79, 142, 247, 0.15);
     }
 
-    .section-title {
-        font-size: 3rem;
-        font-weight: 800;
-        text-align: center;
-        margin-bottom: 60px;
-        background: linear-gradient(to right, #fff, $text-dim);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        letter-spacing: -1px;
+    &:hover {
+      transform: translateX(6px);
+      border-color: rgba(79, 142, 247, 0.35);
+      box-shadow: var(--shadow-hover);
+
+      &::after {
+        background: var(--color-primary);
+        box-shadow: 0 0 0 5px rgba(79, 142, 247, 0.2), 0 0 16px var(--color-glow);
+      }
     }
 
-    .education-list {
+    // ── Card content ──────────────────────────────────────────
+    .card-content {
+      .header-group {
         display: flex;
-        flex-direction: column;
-        gap: 30px;
-        position: relative;
+        justify-content: space-between;
+        align-items: flex-start;
+        margin-bottom: 12px;
+        flex-wrap: wrap;
+        gap: 12px;
+
+        h3 {
+          font-family: var(--font-heading);
+          font-size: 1.4rem;
+          font-weight: 700;
+          color: var(--color-text);
+          margin: 0;
+          letter-spacing: -0.3px;
+          line-height: 1.2;
+        }
+
+        .date-badge {
+          font-family: var(--font-body);
+          font-size: 0.8rem;
+          font-weight: 600;
+          color: var(--color-accent);
+          background: rgba(56, 189, 248, 0.08);
+          padding: 5px 13px;
+          border-radius: var(--radius-pill);
+          border: 1px solid rgba(56, 189, 248, 0.2);
+          white-space: nowrap;
+          flex-shrink: 0;
+        }
+      }
+
+      .school-name {
+        font-family: var(--font-body);
+        font-size: 1rem;
+        color: var(--color-text-muted);
+        font-weight: 500;
+        margin-bottom: 16px;
+        display: flex;
+        align-items: center;
 
         &::before {
-            content: '';
-            position: absolute;
-            left: 20px;
-            top: 20px;
-            bottom: 20px;
-            width: 2px;
-            background: linear-gradient(to bottom, $primary, rgba(59, 130, 246, 0.1));
-            z-index: 0;
+          content: '·';
+          color: var(--color-primary);
+          margin-right: 8px;
+          font-size: 1.8rem;
+          line-height: 0;
         }
+      }
+
+      .details-row {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin-bottom: 16px;
+        flex-wrap: wrap;
+
+        .gpa-badge {
+          font-family: var(--font-body);
+          font-size: 0.85rem;
+          font-weight: 700;
+          color: var(--color-success);
+          background: rgba(16, 185, 129, 0.1);
+          padding: 4px 12px;
+          border-radius: var(--radius-sm);
+          border: 1px solid rgba(16, 185, 129, 0.2);
+        }
+      }
+
+      .description {
+        font-family: var(--font-body);
+        font-size: 0.97rem;
+        line-height: 1.75;
+        color: var(--color-text-muted);
+        margin: 0;
+        border-top: 1px solid var(--color-border);
+        padding-top: 16px;
+      }
     }
+  }
+
+  // ── Responsive ─────────────────────────────────────────────
+  @media (max-width: 768px) {
+    padding: var(--section-padding-sm);
+
+    .education-list::before { left: 9px; }
 
     .education-card {
-        background-color: $card-bg;
-        border: 1px solid $border-color;
-        border-radius: 12px;
-        padding: 30px;
-        position: relative;
-        margin-left: 50px;
-        transition: all 0.3s ease;
-        z-index: 1;
+      margin-left: 32px;
+      padding: 22px 20px;
 
-        &::after {
-            content: '';
-            position: absolute;
-            left: -36px;
-            top: 35px;
-            width: 14px;
-            height: 14px;
-            background-color: $bg-color;
-            border: 3px solid $primary;
-            border-radius: 50%;
-            z-index: 2;
-            transition: all 0.3s ease;
-        }
+      &::after {
+        left: -27px;
+        width: 12px;
+        height: 12px;
+        top: 28px;
+      }
 
-        &:hover {
-            transform: translateX(5px);
-            border-color: rgba(59, 130, 246, 0.4);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+      .card-content .header-group {
+        flex-direction: column;
 
-            &::after {
-                background-color: $primary;
-                box-shadow: 0 0 15px $primary;
-            }
-        }
-
-        .card-content {
-            .header-group {
-                display: flex;
-                justify-content: space-between;
-                align-items: flex-start;
-                margin-bottom: 10px;
-                flex-wrap: wrap;
-                gap: 10px;
-
-                h3 {
-                    font-size: 1.5rem;
-                    font-weight: 700;
-                    color: $text-light;
-                    margin: 0;
-                }
-
-                .date-badge {
-                    font-size: 0.85rem;
-                    color: $accent;
-                    background: rgba(56, 189, 248, 0.1);
-                    padding: 5px 12px;
-                    border-radius: 20px;
-                    border: 1px solid rgba(56, 189, 248, 0.2);
-                    white-space: nowrap;
-                }
-            }
-
-            .school-name {
-                font-size: 1.1rem;
-                color: $text-dim;
-                font-weight: 500;
-                margin-bottom: 15px;
-                display: flex;
-                align-items: center;
-
-                &::before {
-                    content: '•';
-                    color: $primary;
-                    margin-right: 8px;
-                    font-size: 1.5rem;
-                    line-height: 0;
-                }
-            }
-
-            .details-row {
-                display: flex;
-                align-items: center;
-                gap: 15px;
-                margin-bottom: 15px;
-                flex-wrap: wrap;
-
-                .highlight {
-                    font-size: 0.95rem;
-                    color: $text-light;
-                }
-
-                .gpa-badge {
-                    font-size: 0.9rem;
-                    font-weight: 700;
-                    color: #10b981;
-                    background: rgba(16, 185, 129, 0.1);
-                    padding: 4px 10px;
-                    border-radius: 6px;
-                }
-            }
-
-            .description {
-                font-size: 1rem;
-                line-height: 1.6;
-                color: $text-dim;
-                margin: 0;
-                border-top: 1px solid rgba(255, 255, 255, 0.05);
-                padding-top: 15px;
-            }
-        }
+        .date-badge { align-self: flex-start; }
+      }
     }
-
-    @media (max-width: 768px) {
-        padding: 60px 20px;
-
-        .education-list {
-            &::before {
-                left: 10px;
-            }
-        }
-
-        .education-card {
-            margin-left: 30px;
-            padding: 20px;
-
-            &::after {
-                left: -26px;
-                width: 10px;
-                height: 10px;
-            }
-
-            .header-group {
-                flex-direction: column;
-
-                .date-badge {
-                    align-self: flex-start;
-                }
-            }
-        }
-    }
+  }
 }

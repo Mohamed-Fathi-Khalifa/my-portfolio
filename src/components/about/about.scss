@@ -1,195 +1,199 @@
-$primary-color: #2563eb;
-$dark-bg: #0f172a;
-$card-bg: #1e293b;
-$text-light: #f8fafc;
-$text-dim: #94a3b8;
-$accent: #38bdf8;
+@import "../../global.scss";
 
 .about-section {
-    padding: 100px 20px;
-    background-color: $dark-bg;
-    color: $text-light;
-    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  padding: var(--section-padding);
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  position: relative;
+  overflow: hidden;
+
+  // Ambient glow
+  &::before {
+    content: '';
+    position: absolute;
+    top: -80px;
+    right: -80px;
+    width: 380px;
+    height: 380px;
+    background: radial-gradient(circle, rgba(79, 142, 247, 0.1) 0%, transparent 70%);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
     position: relative;
-    overflow: hidden;
+    z-index: 1;
+  }
+
+  .header-wrapper {
+    margin-bottom: 64px;
+    text-align: center;
+  }
+
+  .section-title {
+    @include section-title;
+  }
+
+  .title-bar {
+    width: 56px;
+    height: 4px;
+    background: linear-gradient(to right, var(--color-primary), var(--color-accent));
+    margin: 16px auto 0;
+    border-radius: var(--radius-pill);
+    box-shadow: 0 0 12px var(--color-glow);
+  }
+
+  // ── Two-column grid ────────────────────────────────────────
+  .content-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: start;
+  }
+
+  // ── Sub-title ──────────────────────────────────────────────
+  .sub-title {
+    font-family: var(--font-heading);
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--color-text);
+    margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+    letter-spacing: -0.3px;
 
     &::before {
-        content: '';
-        position: absolute;
-        top: -100px;
-        right: -100px;
-        width: 400px;
-        height: 400px;
-        background: radial-gradient(circle, rgba(37, 99, 235, 0.15) 0%, rgba(0, 0, 0, 0) 70%);
-        border-radius: 50%;
-        z-index: 1;
+      content: '';
+      display: inline-block;
+      width: 4px;
+      height: 22px;
+      background: linear-gradient(to bottom, var(--color-primary), var(--color-accent));
+      margin-right: 12px;
+      border-radius: 2px;
+      flex-shrink: 0;
     }
+  }
 
-    .container {
-        max-width: 1200px;
-        margin: 0 auto;
-        position: relative;
-        z-index: 2;
-    }
+  // ── Bio column ────────────────────────────────────────────
+  .bio-column { }
 
-    .header-wrapper {
-        margin-bottom: 60px;
-        text-align: center;
-    }
+  .bio-text {
+    font-family: var(--font-body);
+    font-size: 1.05rem;
+    line-height: 1.85;
+    color: var(--color-text-muted);
+    margin-bottom: 22px;
+    text-align: justify;
+  }
 
-    .section-title {
-        font-size: 3rem;
-        font-weight: 800;
-        margin: 0;
-        background: linear-gradient(to right, #fff, $text-dim);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        letter-spacing: -1px;
-    }
+  .interests-box {
+    margin-top: 40px;
+    padding: 24px 28px;
+    background: rgba(79, 142, 247, 0.04);
+    border-left: 3px solid var(--color-primary);
+    border-radius: 0 var(--radius-md) var(--radius-md) 0;
+    box-shadow: inset 0 0 20px rgba(79, 142, 247, 0.03);
 
-    .title-bar {
-        width: 60px;
-        height: 4px;
-        background: $primary-color;
-        margin: 15px auto 0;
-        border-radius: 2px;
-    }
-
-    .content-grid {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 60px;
-        align-items: start;
+    p {
+      font-family: var(--font-body);
+      color: var(--color-text-muted);
+      margin: 0;
+      line-height: 1.7;
+      font-size: 0.97rem;
     }
 
     .sub-title {
-        font-size: 1.5rem;
-        font-weight: 600;
-        color: $text-light;
-        margin-bottom: 25px;
-        display: flex;
-        align-items: center;
+      font-size: 1.1rem;
+      margin-bottom: 12px;
 
-        &::before {
-            content: '';
-            display: inline-block;
-            width: 8px;
-            height: 24px;
-            background: $accent;
-            margin-right: 12px;
-            border-radius: 2px;
-        }
+      &::before { display: none; }
+    }
+  }
+
+  // ── Skills column ─────────────────────────────────────────
+  .skills-column {
+    background: var(--color-surface);
+    padding: 36px;
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--color-border);
+    box-shadow: var(--shadow-card);
+    position: relative;
+    overflow: hidden;
+
+    // Subtle inner glow top
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: linear-gradient(to right, transparent, var(--color-primary), transparent);
+      opacity: 0.6;
+    }
+  }
+
+  .skill-category {
+    margin-bottom: 28px;
+
+    &:last-child { margin-bottom: 0; }
+
+    h4 {
+      font-family: var(--font-body);
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--color-text-muted);
+      margin-bottom: 14px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--color-border);
+    }
+  }
+
+  .skill-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .tag {
+    @include tech-badge;
+    font-size: 0.82rem;
+    padding: 6px 14px;
+    border-radius: var(--radius-sm);
+    cursor: default;
+
+    &:hover {
+      transform: translateY(-2px);
+    }
+  }
+
+  // ── Responsive ───────────────────────────────────────────
+  @media (max-width: 992px) {
+    .content-grid {
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    padding: var(--section-padding-sm);
+
+    .skills-column { padding: 24px; }
+
+    .tag {
+      font-size: 0.78rem;
+      padding: 5px 11px;
     }
 
     .bio-text {
-        font-size: 1.1rem;
-        line-height: 1.8;
-        color: $text-dim;
-        margin-bottom: 25px;
-        text-align: justify;
+      font-size: 0.95rem;
+      line-height: 1.7;
+      text-align: left;
     }
-
-    .interests-box {
-        margin-top: 40px;
-        padding: 25px;
-        background: rgba(255, 255, 255, 0.03);
-        border-left: 3px solid $primary-color;
-        border-radius: 0 8px 8px 0;
-
-        p {
-            color: $text-dim;
-            margin: 0;
-            line-height: 1.6;
-        }
-
-        .sub-title {
-            font-size: 1.2rem;
-            margin-bottom: 15px;
-
-            &::before {
-                display: none;
-            }
-        }
-    }
-
-    .skills-column {
-        background: $card-bg;
-        padding: 40px;
-        border-radius: 20px;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-        border: 1px solid rgba(255, 255, 255, 0.05);
-    }
-
-    .skill-category {
-        margin-bottom: 35px;
-
-        &:last-child {
-            margin-bottom: 0;
-        }
-
-        h4 {
-            font-size: 0.95rem;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            color: $text-dim;
-            margin-bottom: 15px;
-            font-weight: 700;
-        }
-    }
-
-    .skill-tags {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 12px;
-    }
-
-    .tag {
-        background: rgba(37, 99, 235, 0.1);
-        color: $accent;
-        padding: 8px 16px;
-        border-radius: 6px;
-        font-size: 0.9rem;
-        font-weight: 500;
-        border: 1px solid rgba(56, 189, 248, 0.2);
-        transition: all 0.3s ease;
-
-        &:hover {
-            background: $primary-color;
-            color: #fff;
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(37, 99, 235, 0.3);
-            border-color: $primary-color;
-        }
-    }
-
-    @media (max-width: 992px) {
-        .content-grid {
-            grid-template-columns: 1fr;
-            gap: 40px;
-        }
-
-        .section-title {
-            font-size: 2.5rem;
-        }
-    }
-
-    @media (max-width: 768px) {
-padding: 60px 20px;
-
-    .skills-column {
-        padding: 25px;
-    }
-
-    .tag {
-        font-size: 0.85rem;
-        padding: 6px 12px;
-    }
-
-    .bio-text {
-        font-size: 0.95rem; 
-        line-height: 1.5;
-        margin-bottom: 15px;
-        text-align: left;
-    }
-    }
+  }
 }
